@@ -8,6 +8,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
 gem 'sassc-rails'
+gem 'slim-rails'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
