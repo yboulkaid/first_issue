@@ -7,11 +7,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
+gem 'rest-client'
 gem 'sassc-rails'
 gem 'slim-rails'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
