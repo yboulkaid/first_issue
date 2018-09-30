@@ -6,6 +6,10 @@ module Github
       @first_issue_label = first_issue_label
     end
 
-    attr_accessor :name, :language, :first_issue_label
+    def issues
+      @issues ||= FetchIssues.(repository: name, label: first_issue_label)
+    end
+
+    attr_reader :name, :language, :first_issue_label
   end
 end
