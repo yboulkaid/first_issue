@@ -1,3 +1,5 @@
-li = repository.name
-h3 Issues
-= render partial: 'issue', collection: repository.issues
+.repository
+  .repository__name = repository.name
+  .repository__label = repository.first_issue_label
+  br
+  = render partial: 'issue', collection: repository.issues
