@@ -23,7 +23,7 @@ Assuming you have a working ruby and node developement environment:
 ### Frontend
 - Make the labels use the same color as on Github.
 - Collapse repositories that have a large number of issues behind a "see more" link.
-- Add an admin interfacte to administrate repositories.
+- Add an admin interface to administrate repositories.
 
 ### Backend
 - Add authentification to the Github API to avoid rate limitation when using the public API.
