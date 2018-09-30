@@ -1,3 +1,8 @@
 h1 First Issue
 
-p Welcome!
+- @repositories_by_language.each do |language, repositories|
+  h2 = "Repositories in #{language}"
+  br
+  ul
+    - repositories.each do |repository|
+      li = repository.name
