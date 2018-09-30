@@ -16,7 +16,7 @@ module Github
         Issue.new(
           title: issue_hash[:title],
           body: issue_hash[:body],
-          url: issue_hash[:url]
+          url: issue_hash[:html_url]
         )
       end
     end

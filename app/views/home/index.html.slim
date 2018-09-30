@@ -1,7 +1,14 @@
 h1 First Issue
+p.intro-text
+  ' Want to contribute to open source projects but don't know where to start?
+  br
+  ' This is a list of open issues on open-source projets which are suitable to be good first issues
+    to tackle. They are tagged by the maintainers with a specific Github label.
+  br
+  ' This app centralizes this issues to make it easier for newcomers to open source projects to
+    contribute.
 
 - @repositories_by_language.each do |language, repositories|
-  h2 = "Repositories in #{language}"
-  br
+  h2 = language.to_s.titleize
   ul
     = render partial: 'repository', collection: repositories
