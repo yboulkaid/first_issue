@@ -12,7 +12,13 @@ module Github
     end
 
     def fetch!
-      parsed_body
+      parsed_body.map do |issue_hash|
+        Issue.new(
+          title: issue_hash[:title],
+          body: issue_hash[:body],
+          url: issue_hash[:url]
+        )
+      end
     end
 
     private
