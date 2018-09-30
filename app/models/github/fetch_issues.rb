@@ -1,5 +1,7 @@
 module Github
   class FetchIssues
+    GithubApiError = Class.new(StandardError)
+
     def self.call(repository:, label:)
       new(repository: repository, label: label).fetch!
     end
@@ -10,17 +12,23 @@ module Github
     end
 
     def fetch!
-      JSON.parse(response.body, symbolize_names: true)
+      parsed_body
     end
 
     private
 
-    def response
-      @response ||= fetch_response!
+    def parsed_body
+      JSON.parse(response.body, symbolize_names: true)
     end
 
-    def fetch_response!
-      RestClient.get(issues_uri, params: labels_params)
+    def success?
+      response.code == 200
+    end
+
+    def response
+      @response ||= RestClient.get(issues_uri, params: labels_params)
+    rescue RestClient::ExceptionWithResponse => e
+      raise GithubApiError, e
     end
 
     def issues_uri

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 RSpec.describe Github::FetchIssues do
-  describe '#.call' do
-    context 'with a valid repository and label' do
-      it 'calls the github issue endpoint and returns a parsed JSON' do
+  describe '.call' do
+    context 'when the call to Github succeeds' do
+      it 'calls the Github issue endpoint and returns a parsed JSON' do
         stubbed_response = [{ id: 1 }, { id: 2 }].to_json
         stub_request(:get, 'https://api.github.com/repos/rails/rails/issues?labels=good-first-patch')
           .to_return(status: 200, body: stubbed_response)
@@ -11,6 +11,17 @@ RSpec.describe Github::FetchIssues do
         result = described_class.call(repository: 'rails/rails', label: 'good-first-patch')
 
         expect(result).to eq([{ id: 1 }, { id: 2 }])
+      end
+    end
+
+    context 'when the call to Github fails' do
+      it 'raises an exception' do
+        stub_request(:get, 'https://api.github.com/repos/invalid_repository/issues?labels=invalid')
+          .to_return(status: 404)
+
+        expect { described_class.call(repository: 'invalid_repository', label: 'invalid') }.to(
+          raise_error Github::FetchIssues::GithubApiError
+        )
       end
     end
   end
