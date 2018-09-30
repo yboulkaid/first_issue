@@ -4,9 +4,8 @@
 
 Want to contribute to open source projects but don't know where to start?
 
-This is a list of open issues on open-source projects that are suitable to be good first issues to tackle. They are tagged by the maintainers with a specific label.
-
-This app centralizes these issues to make it easier for newcomers to open source projects to contribute.
+Some Open Source projects tag issues suitable for newcomers with a specific label on Github. This app 
+centralizes these issues to make it easier for newcomers to contribute.
 
 ## Installation instructions
 The app is running on Ruby on Rails. 
